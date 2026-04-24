@@ -9,6 +9,7 @@ class ParkingTest {
 	
 	Parking p ,p1;
 	Vehicule v,v1,v2;
+	Parking[] ps;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -17,6 +18,7 @@ class ParkingTest {
 		p1 = new Parking(2, 3);
 		v1 = new Vehicule("1");
 		v2 = new Vehicule("2");
+		ps = new Parking[10];
 	}
 
 	@Test
@@ -82,5 +84,16 @@ class ParkingTest {
 		assertEquals(15,p.retirer(v,5));
 		assertThrows(IllegalArgumentException.class, () -> p.retirer(v, 5));
 
+	}
+	
+	@Test
+	void testIter8() {
+		for (int i = 0; i < 10; i++) {
+			assertTrue(v.abonner(ps[i]));
+		}
+		assertFalse(v.abonner(p));
+		assertTrue(v.estAbonne(ps[0]));
+		assertFalse(v.estAbonne(p));
+		assertFalse(v.estAbonne(p1));
 	}
 }
