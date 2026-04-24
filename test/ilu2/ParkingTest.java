@@ -72,4 +72,15 @@ class ParkingTest {
 		assertTrue(p.contient(v));
 		assertFalse(p.contient(v1));
 	}
+	
+	@Test
+	void testIter7() {
+		assertFalse(p1.contient(v));
+		assertThrows(IllegalArgumentException.class, () -> p1.retirer(v, 5));
+		assertTrue(p.ajouter(v));
+		assertTrue(p.contient(v));
+		assertEquals(15,p.retirer(v,5));
+		assertThrows(IllegalArgumentException.class, () -> p.retirer(v, 5));
+
+	}
 }

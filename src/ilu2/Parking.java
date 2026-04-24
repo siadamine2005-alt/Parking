@@ -29,7 +29,8 @@ public class Parking {
 		return false;
 	}
 
-	public int retirer(Vehicule v, int heures) {
+	public int retirer(Vehicule v, int heures) throws IllegalArgumentException{
+		if(!contient(v)) throw new IllegalArgumentException();
 		for (int i = 0; i < vehicules.length; i++) {
 			if(vehicules[i] == v) {
 				vehicules[i] = null;
