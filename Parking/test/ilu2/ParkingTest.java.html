@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>ParkingTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">ParkingTest (Apr 24, 2026 11:43:28 AM)</a> &gt; <a href="../../index.html" class="el_group">Parking</a> &gt; <a href="../index.html" class="el_bundle">test</a> &gt; <a href="index.source.html" class="el_package">ilu2</a> &gt; <span class="el_source">ParkingTest.java</span></div><h1>ParkingTest.java</h1><pre class="source lang-java linenums">package ilu2;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L8">class ParkingTest {</span>
+	
+	Parking p ,p1,p2,p3;
+	Vehicule v,v1,v2;
+	Parking[] ps;
+	
+	Ambulance a ;
+
+	@BeforeEach
+	void setUp() throws Exception {
+<span class="fc" id="L18">		p = new Parking(10,3);</span>
+<span class="fc" id="L19">		v = new Vehicule(&quot;3&quot;);</span>
+<span class="fc" id="L20">		p1 = new Parking(2, 3);</span>
+<span class="fc" id="L21">		v1 = new Vehicule(&quot;1&quot;);</span>
+<span class="fc" id="L22">		v2 = new Vehicule(&quot;2&quot;);</span>
+<span class="fc" id="L23">		ps = new Parking[10];</span>
+<span class="fc" id="L24">		p2 = new Parking(10, 10,(float )0.5);</span>
+<span class="fc" id="L25">		a = new Ambulance(&quot;233&quot;,&quot;H1&quot;);</span>
+<span class="fc" id="L26">		p3 =new Parking(10, 20,(float )0.5);</span>
+<span class="fc" id="L27">	}</span>
+
+	@Test
+	void testIter0() {
+<span class="fc" id="L31">		assertNotNull(p);</span>
+<span class="fc" id="L32">		assertNotNull(v);</span>
+<span class="fc" id="L33">		assertNotNull(p2);</span>
+<span class="fc" id="L34">	}</span>
+
+	@Test
+	void testIter1() {
+<span class="fc" id="L38">		assertEquals(10,p.getNombrePlacesLibres());</span>
+<span class="fc" id="L39">	}</span>
+	
+	@Test
+	void testIter2() {
+<span class="fc" id="L43">		assertEquals(10,p.getNombrePlacesLibres());</span>
+<span class="fc" id="L44">		p.ajouter(v);</span>
+<span class="fc" id="L45">		assertEquals(9,p.getNombrePlacesLibres());</span>
+<span class="fc" id="L46">	}</span>
+	
+	@Test
+	void testIter3() {
+<span class="fc" id="L50">		assertEquals(10,p.getNombrePlacesLibres());</span>
+<span class="fc" id="L51">		p.ajouter(v);</span>
+<span class="fc" id="L52">		assertEquals(9,p.getNombrePlacesLibres());</span>
+<span class="fc" id="L53">		p.retirer(v,5);</span>
+<span class="fc" id="L54">		assertEquals(10,p.getNombrePlacesLibres());</span>
+<span class="fc" id="L55">	}</span>
+	
+	@Test
+	void testIter4() {
+<span class="fc" id="L59">		assertEquals(10,p.getNombrePlacesLibres());</span>
+<span class="fc" id="L60">		p.ajouter(v);</span>
+<span class="fc" id="L61">		assertEquals(9,p.getNombrePlacesLibres());</span>
+<span class="fc" id="L62">		assertEquals(15,p.retirer(v,5));</span>
+<span class="fc" id="L63">		assertEquals(10,p.getNombrePlacesLibres());</span>
+<span class="fc" id="L64">	}</span>
+	
+	@Test
+	void testIter5() {
+<span class="fc" id="L68">		assertEquals(2,p1.getNombrePlacesLibres());</span>
+<span class="fc" id="L69">		assertTrue(p1.ajouter(v));</span>
+<span class="fc" id="L70">		assertEquals(1,p1.getNombrePlacesLibres());</span>
+<span class="fc" id="L71">		assertTrue(p1.ajouter(v1));</span>
+<span class="fc" id="L72">		assertEquals(0,p1.getNombrePlacesLibres());</span>
+<span class="fc" id="L73">		assertFalse(p1.ajouter(v2));</span>
+
+<span class="fc" id="L75">	}</span>
+	
+	@Test
+	void testIter6() {
+<span class="fc" id="L79">		assertTrue(p.ajouter(v));</span>
+<span class="fc" id="L80">		assertTrue(p.contient(v));</span>
+<span class="fc" id="L81">		assertFalse(p.contient(v1));</span>
+<span class="fc" id="L82">	}</span>
+	
+	@Test
+	void testIter7() {
+<span class="fc" id="L86">		assertFalse(p1.contient(v));</span>
+<span class="pc" id="L87">		assertThrows(IllegalArgumentException.class, () -&gt; p1.retirer(v, 5));</span>
+<span class="fc" id="L88">		assertTrue(p.ajouter(v));</span>
+<span class="fc" id="L89">		assertTrue(p.contient(v));</span>
+<span class="fc" id="L90">		assertEquals(15,p.retirer(v,5));</span>
+<span class="pc" id="L91">		assertThrows(IllegalArgumentException.class, () -&gt; p.retirer(v, 5));</span>
+
+<span class="fc" id="L93">	}</span>
+	
+	@Test
+	void testIter8() {
+<span class="fc bfc" id="L97" title="All 2 branches covered.">		for (int i = 0; i &lt; 10; i++) {</span>
+<span class="fc" id="L98">			assertTrue(v.abonner(ps[i]));</span>
+		}
+<span class="fc" id="L100">		assertFalse(v.abonner(p));</span>
+<span class="fc" id="L101">		assertTrue(v.estAbonne(ps[0]));</span>
+<span class="fc" id="L102">		assertFalse(v.estAbonne(p));</span>
+<span class="fc" id="L103">		assertFalse(v.estAbonne(p1));</span>
+<span class="fc" id="L104">	}</span>
+	
+	@Test
+	void testIter9() {
+<span class="fc" id="L108">		v.abonner(p2);</span>
+<span class="fc" id="L109">		p2.ajouter(v);</span>
+<span class="fc" id="L110">		p2.ajouter(v1);</span>
+<span class="fc" id="L111">		assertEquals(15, p2.retirer(v, 3));</span>
+<span class="fc" id="L112">		assertEquals(30, p2.retirer(v1, 3));</span>
+<span class="fc" id="L113">	}</span>
+	
+	@Test
+	void testIter10() {
+<span class="fc" id="L117">		a.abonner(p2);</span>
+<span class="fc" id="L118">		p2.ajouter(a);</span>
+<span class="fc" id="L119">		p3.ajouter(a);</span>
+<span class="fc" id="L120">		assertEquals(15, p2.retirer(a, 3));</span>
+<span class="fc" id="L121">		assertEquals(30, p3.retirer(a, 3));</span>
+<span class="fc" id="L122">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span>ParkingTest (Apr 24, 2026 11:43:28 AM)</div></body></html>

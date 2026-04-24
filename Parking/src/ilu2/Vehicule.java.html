@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Vehicule.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">ParkingTest (Apr 24, 2026 11:43:28 AM)</a> &gt; <a href="../../index.html" class="el_group">Parking</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">ilu2</a> &gt; <span class="el_source">Vehicule.java</span></div><h1>Vehicule.java</h1><pre class="source lang-java linenums">package ilu2;
+
+public class Vehicule {
+	private String immatriculation;
+<span class="fc" id="L5">	private Parking[] abonnements = new Parking[10];</span>
+<span class="fc" id="L6">	private int nbAbonnement = 0;</span>
+
+<span class="fc" id="L8">	public Vehicule(String immatriculation) {</span>
+<span class="fc" id="L9">		this.immatriculation = immatriculation;</span>
+<span class="fc" id="L10">	}</span>
+
+	public boolean abonner(Parking p) {
+<span class="fc bfc" id="L13" title="All 2 branches covered.">		if (nbAbonnement == 10)</span>
+<span class="fc" id="L14">			return false;</span>
+<span class="fc" id="L15">		abonnements[nbAbonnement] = p;</span>
+<span class="fc" id="L16">		nbAbonnement++;</span>
+<span class="fc" id="L17">		return true;</span>
+	}
+
+	public boolean estAbonne(Parking p) {
+<span class="fc bfc" id="L21" title="All 2 branches covered.">		for (int i = 0; i &lt; abonnements.length; i++) {</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">			if (abonnements[i] == p)</span>
+<span class="fc" id="L23">				return true;</span>
+		}
+<span class="fc" id="L25">		return false;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span>ParkingTest (Apr 24, 2026 11:43:28 AM)</div></body></html>

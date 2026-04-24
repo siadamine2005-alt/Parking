@@ -7,9 +7,11 @@ import org.junit.jupiter.api.Test;
 
 class ParkingTest {
 	
-	Parking p ,p1,p2;
+	Parking p ,p1,p2,p3;
 	Vehicule v,v1,v2;
 	Parking[] ps;
+	
+	Ambulance a ;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -20,6 +22,8 @@ class ParkingTest {
 		v2 = new Vehicule("2");
 		ps = new Parking[10];
 		p2 = new Parking(10, 10,(float )0.5);
+		a = new Ambulance("233","H1");
+		p3 =new Parking(10, 20,(float )0.5);
 	}
 
 	@Test
@@ -107,4 +111,14 @@ class ParkingTest {
 		assertEquals(15, p2.retirer(v, 3));
 		assertEquals(30, p2.retirer(v1, 3));
 	}
+	
+	@Test
+	void testIter10() {
+		a.abonner(p2);
+		p2.ajouter(a);
+		p3.ajouter(a);
+		assertEquals(15, p2.retirer(a, 3));
+		assertEquals(30, p3.retirer(a, 3));
+	}
+	
 }
