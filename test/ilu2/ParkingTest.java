@@ -65,4 +65,11 @@ class ParkingTest {
 		assertFalse(p1.ajouter(v2));
 
 	}
+	
+	@Test
+	void testIter6() {
+		assertTrue(p.ajouter(v));
+		assertTrue(p.contient(v));
+		assertFalse(p.contient(v1));
+	}
 }

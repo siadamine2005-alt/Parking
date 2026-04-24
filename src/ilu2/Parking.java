@@ -1,6 +1,7 @@
 package ilu2;
 
 import java.util.Iterator;
+import java.util.function.BooleanSupplier;
 
 public class Parking {
 	private int tarifHoraire;
@@ -37,6 +38,15 @@ public class Parking {
 			}
 		}
 		return heures*tarifHoraire;
+	}
+
+	public boolean contient(Vehicule v) {
+		for (int i = 0; i < vehicules.length; i++) {
+			if(vehicules[i] == v) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
