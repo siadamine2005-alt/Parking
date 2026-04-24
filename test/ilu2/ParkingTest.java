@@ -12,7 +12,7 @@ class ParkingTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		p = new Parking(10);
+		p = new Parking(10,3);
 		v = new Vehicule("1");
 	}
 
@@ -39,7 +39,16 @@ class ParkingTest {
 		assertEquals(10,p.getNombrePlacesLibres());
 		p.ajouter(v);
 		assertEquals(9,p.getNombrePlacesLibres());
-		p.retirer(v);
+		p.retirer(v,5);
+		assertEquals(10,p.getNombrePlacesLibres());
+	}
+	
+	@Test
+	void testIter4() {
+		assertEquals(10,p.getNombrePlacesLibres());
+		p.ajouter(v);
+		assertEquals(9,p.getNombrePlacesLibres());
+		assertEquals(15,p.retirer(v,5));
 		assertEquals(10,p.getNombrePlacesLibres());
 	}
 }
