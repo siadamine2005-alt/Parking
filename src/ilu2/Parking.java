@@ -1,14 +1,28 @@
 package ilu2;
 
+import java.util.Iterator;
+
 public class Parking {
-	private int nbPlaces;
+	private int nbPlacesLibre;
+	private Vehicule[] vehicules;
 
 	public Parking(int nbPlaces) {
-		this.nbPlaces = nbPlaces;
+		nbPlacesLibre = nbPlaces;
+		vehicules = new Vehicule[nbPlaces];
 	}
 
 	public int getNombrePlacesLibres() {
-		return nbPlaces;
+		return nbPlacesLibre;
+	}
+
+	public void ajouter(Vehicule v) {
+		for (int i = 0; i < vehicules.length; i++) {
+			if(vehicules[i] == null) {
+				vehicules[i] = v;
+				nbPlacesLibre--;
+				break;
+			}
+		}
 	}
 
 }
