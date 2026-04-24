@@ -34,4 +34,12 @@ class ParkingTest {
 		assertEquals(9,p.getNombrePlacesLibres());
 	}
 	
+	@Test
+	void testIter3() {
+		assertEquals(10,p.getNombrePlacesLibres());
+		p.ajouter(v);
+		assertEquals(9,p.getNombrePlacesLibres());
+		p.retirer(v);
+		assertEquals(10,p.getNombrePlacesLibres());
+	}
 }

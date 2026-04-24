@@ -25,4 +25,14 @@ public class Parking {
 		}
 	}
 
+	public void retirer(Vehicule v) {
+		for (int i = 0; i < vehicules.length; i++) {
+			if(vehicules[i] == v) {
+				vehicules[i] = null;
+				nbPlacesLibre++;
+				break;
+			}
+		}
+	}
+
 }
