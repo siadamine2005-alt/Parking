@@ -7,13 +7,16 @@ import org.junit.jupiter.api.Test;
 
 class ParkingTest {
 	
-	Parking p ;
-	Vehicule v;
+	Parking p ,p1;
+	Vehicule v,v1,v2;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		p = new Parking(10,3);
-		v = new Vehicule("1");
+		v = new Vehicule("3");
+		p1 = new Parking(2, 3);
+		v1 = new Vehicule("1");
+		v2 = new Vehicule("2");
 	}
 
 	@Test
@@ -50,5 +53,16 @@ class ParkingTest {
 		assertEquals(9,p.getNombrePlacesLibres());
 		assertEquals(15,p.retirer(v,5));
 		assertEquals(10,p.getNombrePlacesLibres());
+	}
+	
+	@Test
+	void testIter5() {
+		assertEquals(2,p1.getNombrePlacesLibres());
+		assertTrue(p1.ajouter(v));
+		assertEquals(1,p1.getNombrePlacesLibres());
+		assertTrue(p1.ajouter(v1));
+		assertEquals(0,p1.getNombrePlacesLibres());
+		assertFalse(p1.ajouter(v2));
+
 	}
 }

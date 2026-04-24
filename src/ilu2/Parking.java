@@ -17,14 +17,15 @@ public class Parking {
 		return nbPlacesLibre;
 	}
 
-	public void ajouter(Vehicule v) {
+	public boolean ajouter(Vehicule v) {
 		for (int i = 0; i < vehicules.length; i++) {
 			if(vehicules[i] == null) {
 				vehicules[i] = v;
 				nbPlacesLibre--;
-				break;
+				return true;
 			}
 		}
+		return false;
 	}
 
 	public int retirer(Vehicule v, int heures) {
