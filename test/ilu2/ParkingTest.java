@@ -19,4 +19,8 @@ class ParkingTest {
 		assertNotNull(p);
 	}
 
+	@Test
+	void testIter1() {
+		assertEquals(10,p.getNombrePlacesLibres());
+	}
 }

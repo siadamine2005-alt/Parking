@@ -7,4 +7,8 @@ public class Parking {
 		this.nbPlaces = nbPlaces;
 	}
 
+	public int getNombrePlacesLibres() {
+		return nbPlaces;
+	}
+
 }
