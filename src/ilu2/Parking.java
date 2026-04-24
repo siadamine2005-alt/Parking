@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.function.BooleanSupplier;
 
 public class Parking {
+	private float reduction = 1;
 	private int tarifHoraire;
 	private int nbPlacesLibre;
 	private Vehicule[] vehicules;
@@ -12,6 +13,11 @@ public class Parking {
 		nbPlacesLibre = nbPlaces;
 		vehicules = new Vehicule[nbPlaces];
         tarifHoraire = tarif;
+	}
+
+	public Parking(int nbPlaces, int tarif, float reduc) {
+		this(nbPlaces,tarif);
+		reduction = reduc;
 	}
 
 	public int getNombrePlacesLibres() {
@@ -29,7 +35,7 @@ public class Parking {
 		return false;
 	}
 
-	public int retirer(Vehicule v, int heures) throws IllegalArgumentException{
+	public float retirer(Vehicule v, int heures) throws IllegalArgumentException{
 		if(!contient(v)) throw new IllegalArgumentException();
 		for (int i = 0; i < vehicules.length; i++) {
 			if(vehicules[i] == v) {
@@ -38,7 +44,12 @@ public class Parking {
 				break;
 			}
 		}
-		return heures*tarifHoraire;
+		float prix = heures * tarifHoraire;
+		
+		if(v.estAbonne(this)) prix = prix * reduction;
+	
+		return prix;
+				
 	}
 
 	public boolean contient(Vehicule v) {

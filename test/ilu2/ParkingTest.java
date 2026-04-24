@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class ParkingTest {
 	
-	Parking p ,p1;
+	Parking p ,p1,p2;
 	Vehicule v,v1,v2;
 	Parking[] ps;
 
@@ -19,12 +19,14 @@ class ParkingTest {
 		v1 = new Vehicule("1");
 		v2 = new Vehicule("2");
 		ps = new Parking[10];
+		p2 = new Parking(10, 10,(float )0.5);
 	}
 
 	@Test
 	void testIter0() {
 		assertNotNull(p);
 		assertNotNull(v);
+		assertNotNull(p2);
 	}
 
 	@Test
@@ -95,5 +97,14 @@ class ParkingTest {
 		assertTrue(v.estAbonne(ps[0]));
 		assertFalse(v.estAbonne(p));
 		assertFalse(v.estAbonne(p1));
+	}
+	
+	@Test
+	void testIter9() {
+		v.abonner(p2);
+		p2.ajouter(v);
+		p2.ajouter(v1);
+		assertEquals(15, p2.retirer(v, 3));
+		assertEquals(30, p2.retirer(v1, 3));
 	}
 }
